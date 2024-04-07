@@ -1,113 +1,225 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+import Box from "@/components/box"
+import MapboxComponent from "@/components/map"
+import ThemeSwitch from "@/components/themeSwitch"
+import Image from "next/image"
+import Link from "next/link"
+import { FaBehance, FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa"
+import { FaXTwitter } from "react-icons/fa6"
+import { CiFileOn } from "react-icons/ci";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { motion, useAnimation } from 'framer-motion';
+import { useState } from "react"
+import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card"
+import { PinContainer } from "@/components/ui/3d-opin"
+
+
+
+const Home = () => {
+
+  const [downloading, setDownloading] = useState(false);
+  const controls = useAnimation();
+
+  const startDownload = async () => {
+    setDownloading(true);
+    await controls.start({ rotate: 360, transition: { duration: 2 } });
+    setDownloading(false);
+  };
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <Box className="flex col-span-1 md:col-span-2 w-full p-0 pb-5 flex-col h-fit md:h-80">
+        <div className="flex justify-between items-start">
+          <div className="h-40 rounded-2xl pt-4 ">
+            {/* <video className="h-full rounded-2xl" autoPlay loop muted playsInline src="/test.mov" ></video> */}
+            <img src="/me.gif" className="h-full rounded-2xl" alt="" />
+          </div>
+          <ThemeSwitch />
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
+        <div className="font-bold p-5 gap-2 text-2xl">
+          <span>
+            Hi! I am Ayodya Banuka.Welcome to
+            <span className="text-green-600">
+              {" "}my portfolio
             </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          </span>
+          .As a Senior Software Engineer, I combine{'  '}
+          <span className="text-xl px-3 pb-1 pt-0.5 rounded-md text-white bg-blue-900 font-mono">technical expertise</span>
+          {'  '}with{'  '}
+          <span className="inline-block border border-[#9D51FF] px-1 mr-1 relative">
+            <div className="absolute w-[8px] h-[8px] border border-[#9D51FF] bg-white dark:bg-gray-800 -top-[4px] -left-[4px]">
+            </div>
+            <div className="absolute w-[8px] h-[8px] border border-[#9D51FF] bg-white dark:bg-gray-800 -top-[4px] -right-[4px]">
+            </div>
+            <div className="absolute w-[8px] h-[8px] border border-[#9D51FF] bg-white dark:bg-gray-800 -bottom-[4px] -left-[4px]">
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+            </div>
+            <div className="absolute w-[8px] h-[8px] border border-[#9D51FF] bg-white dark:bg-gray-800 -bottom-[4px] -right-[4px]">
+            </div>
+            <div className="absolute left-1/2 -translate-x-1/2 translate-y-full mt-[18px] px-1 pb-0.5 rounded bg-[#9D51FF] text-white text-xs font-semibold">
+              Hug✗Hug
+            </div>
+            creative flair
+          </span>
+          to deliver
+          <span className="text-purple-600">
+            {" "}innovative solutions.
+          </span>
+        </div>
+      </Box>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+      <Box className="p-0 w-full  h-80">
+        <MapboxComponent />
+      </Box>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+      <Box className="flex justify-center items-center flex-col col-span-1  h-80 gap-3 w-full bg-[url('/bluedown.png')]">
+        <div className="flex gap-3">
+          <motion.div whileTap={{ scale: 0.95 }}>
+            <Link className="border p-3 rounded-lg flex items-center gap-2 text-black dark:text-gray-400 bg-white dark:bg-[#2E3947] hover:bg-gray-200 dark:hover:border-gray-400 dark:border transition-all group duration-100" href={"/"}>
+              <FaLinkedinIn />
+            </Link>
+          </motion.div>
+          <motion.div whileTap={{ scale: 0.95 }}>
+            <Link className="border p-3 rounded-lg flex items-center gap-2 text-black dark:text-gray-400 bg-white dark:bg-[#2E3947] hover:bg-gray-200 dark:hover:border-gray-400 dark:border transition-all group duration-100" href={"/"}>
+              <FaInstagram />
+            </Link>
+          </motion.div>
+          <motion.div whileTap={{ scale: 0.95 }}>
+            <Link className="border p-3 rounded-lg flex items-center gap-2 text-black dark:text-gray-400 bg-white dark:bg-[#2E3947] hover:bg-gray-200 dark:hover:border-gray-400 dark:border transition-all group duration-100" href={"/"}>
+              <FaFacebookF />
+            </Link>
+          </motion.div>
+        </div>
+        <div className="flex gap-3">
+          <motion.div whileTap={{ scale: 0.95 }}>
+            <Link className="border p-3 rounded-lg flex items-center gap-2 text-black dark:text-gray-400 bg-white dark:bg-[#2E3947] hover:bg-gray-200 dark:hover:border-gray-400 dark:border transition-all duration-100" href={"/"}>
+              <FaBehance />
+            </Link>
+          </motion.div>
+          <motion.div whileTap={{ scale: 0.95 }}>
+            <Link className="border p-3 rounded-lg flex items-center gap-2 text-black dark:text-gray-400 bg-white dark:bg-[#2E3947] hover:bg-gray-200 dark:hover:border-gray-400 dark:border transition-all duration-100" href={"/"}>
+              <FaXTwitter />
+            </Link>
+          </motion.div>
+        </div>
+      </Box>
+      <Box className="relative h-80 w-full grid col-span-1  group">
+        <div>
+          <div style={{ position: 'absolute', top: '56%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+            <Image src="/folderBack.png" width={150} height={150} alt="" />
+          </div>
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }} >
+            <Image src="/doc.png" className="group-hover:-translate-y-6 transition-all duration-500 ease-in-out" width={120} height={120} alt="" />
+          </div>
+          <div style={{ position: 'absolute', top: '59%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+            <Image src="/folderFront.png" width={150} height={150} alt="" />
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 p-3 group">
+          <button className="border w-fit p-3 rounded-full flex items-center gap-2 text-base text-black dark:text-gray-400 bg-white dark:bg-[#2E3947] hover:bg-gray-200 dark:hover:border-gray-400 dark:border transition-all group duration-500 ease-in-out">
+            <CiFileOn />
+            <div className="opacity-0 hidden group-hover:opacity-100 group-hover:block transition-all duration-500 ease-in-out">Ayodya&apos;s CV</div>
+          </button>
+        </div>
+      </Box>
+      <CardContainer className="h-80 w-full flex flex-col relative justify-center items-center">
+        <Box className="h-80 w-full flex flex-col relative justify-center items-center">
+          <CardItem
+            translateZ={20}
+            className="flex justify-center w-full"
+          >
+            <motion.div whileTap={{ scale: 0.95 }}>
+              <Link className="border w-fit p-3 rounded-full flex items-center gap-2 text-black dark:text-gray-400 bg-white dark:bg-[#2E3947] hover:bg-gray-200 dark:hover:border-gray-400 dark:border transition-all duration-100" href={"mailto:ayodyabanukafernando@gmail.com"}>
+                ayodyabanukafernando@gmail.com
+              </Link>
+            </motion.div>
+          </CardItem>
+
+          <div className="absolute hidden bottom-0 left-50 p-10">Thank You!</div>
+        </Box>
+      </CardContainer>
+      <Box className=" grid grid-cols-3 md:flex gap-5 justify-center items-center col-span-1 h-80 md:col-span-2 w-full">
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger className="flex justify-center">
+              <Image className="text-gray-300 hover:scale-125 transition-all duration-300 ease-in-out " src={"/icons/nextjs.svg"} width={40} height={40} alt={""} />
+            </TooltipTrigger>
+            <TooltipContent>
+              <div>NextJs</div>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger className="flex justify-center">
+              <Image className="text-gray-300 hover:scale-125 transition-all duration-300 ease-in-out" src={"/icons/nest.svg"} width={40} height={40} alt={""} />
+            </TooltipTrigger>
+            <TooltipContent>
+              <div>NestJs</div>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger className="flex justify-center">
+              <Image className="text-gray-300 hover:scale-125 transition-all duration-300 ease-in-out" src={"/icons/framer.svg"} width={40} height={40} alt={""} />
+            </TooltipTrigger>
+            <TooltipContent>
+              <div>Framer Motion</div>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger className="flex justify-center">
+              <Image className="text-gray-300 hover:scale-125 transition-all duration-300 ease-in-out" src={"/icons/react.svg"} width={40} height={40} alt={""} />
+            </TooltipTrigger>
+            <TooltipContent>
+              <div>React</div>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger className="flex justify-center">
+              <Image className="text-gray-300 hover:scale-125 transition-all duration-300 ease-in-out" src={"/icons/node.svg"} width={40} height={40} alt={""} />
+            </TooltipTrigger>
+            <TooltipContent>
+              <div>NodeJs</div>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger className="flex justify-center">
+              <Image className="text-gray-300 hover:scale-125 transition-all duration-300 ease-in-out" src={"/icons/flutter.svg"} width={40} height={40} alt={""} />
+            </TooltipTrigger>
+            <TooltipContent>
+              <div>Flutter</div>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger className="flex justify-center">
+              <Image className="text-gray-300 hover:scale-125 transition-all duration-300 ease-in-out" src={"/icons/apple.svg"} width={40} height={40} alt={""} />
+            </TooltipTrigger>
+            <TooltipContent>
+              <div>IOS(Swift)</div>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger className="flex justify-center">
+              <Image className="text-gray-300 hover:scale-125 transition-all duration-300 ease-in-out" src={"/icons/android.svg"} width={40} height={40} alt={""} />
+            </TooltipTrigger>
+            <TooltipContent>
+              <div>Android(Java)</div>
+            </TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger className="flex justify-center">
+              <Image className="text-gray-300 hover:scale-125 transition-all duration-300 ease-in-out" src={"/icons/figma.svg"} width={40} height={40} alt={""} />
+            </TooltipTrigger>
+            <TooltipContent>
+              <div>Figma</div>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </Box>
+
+    </div >
+  )
 }
+
+export default Home
+
+
+// #475671
